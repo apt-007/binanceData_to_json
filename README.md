@@ -65,4 +65,6 @@ data_dumper.dump_data(
     tickers_to_exclude=["UST"],
 )
 ```
-
+- 修改base_path 为你的下载数据列表
+- 修改output_path 为你的保存文件夹
+- 修改main.rs 的time函数为你需要把CSV转换为json的k线周期 例如 1m,1h,4h

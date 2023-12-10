@@ -18,10 +18,14 @@ fn timestamp_to_utc_string(timestamp: i64) -> String {
     datetime_utc.to_string()
 }
 
+
 fn main() -> Result<(), Box<dyn Error>> {
+    // 1m,15m,1h,4h,1d,7w....
+    let time = "1h";
+
     // Processing of monthly data
-    let base_path = r#"C:\Users\XXX\Desktop\rust-demo\test\jupyterlab\HISTORY\ALL\futures\um\monthly\klines"#;
-    let output_path = r#"C:\Users\XXX\Desktop\rust-demo\test\jupyterlab\HISTORY\ALL\futures\um\monthly\json_output"#;
+    let base_path = r#"C:\Users\XXX\Desktop\futures\um\monthly\klines"#;
+    let output_path = r#"C:\Users\XXX\Desktop\futures\um\monthly\json_output"#;
 
     let mut coin_names = Vec::new();
 
@@ -37,8 +41,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
 
     for coin_name in &coin_names {
-        let coin_k_files = format!(r#"{}\{}\1d\"#, base_path, coin_name);
-        let json_file_path = format!(r#"{}\{}-1d-ALL.json"#, output_path, coin_name);
+        let coin_k_files = format!(r#"{}\{}\{}\"#, base_path, coin_name,time);
+        let json_file_path = format!(r#"{}\{}-{}-ALL.json"#, output_path, coin_name,time);
 
         let mut transformed_data_list = Vec::new();
 
@@ -105,7 +109,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         let json_str = serde_json::to_string_pretty(&transformed_data_list)?;
 
-        let json_file_path = format!(r#"{}\{}-1d-ALL.json"#, output_path, coin_name);
+        let json_file_path = format!(r#"{}\{}-{}-ALL.json"#, output_path, coin_name,time);
         let mut json_file = File::create(json_file_path)?;
         json_file.write_all(json_str.as_bytes())?;
     }
