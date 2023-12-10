@@ -20,8 +20,8 @@ fn timestamp_to_utc_string(timestamp: i64) -> String {
 
 fn main() -> Result<(), Box<dyn Error>> {
     // Processing of monthly data
-    let base_path = r#"C:\Users\adhuc\Desktop\rust-demo\test\jupyterlab\HISTORY\ALL\futures\um\monthly\klines"#;
-    let output_path = r#"C:\Users\adhuc\Desktop\rust-demo\test\jupyterlab\HISTORY\ALL\futures\um\monthly\json_output"#;
+    let base_path = r#"C:\Users\XXX\Desktop\rust-demo\test\jupyterlab\HISTORY\ALL\futures\um\monthly\klines"#;
+    let output_path = r#"C:\Users\XXX\Desktop\rust-demo\test\jupyterlab\HISTORY\ALL\futures\um\monthly\json_output"#;
 
     let mut coin_names = Vec::new();
 
